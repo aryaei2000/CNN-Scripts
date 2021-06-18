@@ -48,9 +48,9 @@ for f in range(0, len(image_files)):
 
     for k in range(0, 512):
         fmap = []
-        for i in range(0, len(fmap_matrix) - 1):
+        for i in range(0, len(fmap_matrix)):
             fmap_row = []
-            for j in range(0, len(fmap_matrix) - 1):
+            for j in range(0, len(fmap_matrix)):
                 fmap_row.append(fmap_matrix[i][j][k])
             fmap.append(fmap_row)
         np_fmap = np.array(fmap)
@@ -73,7 +73,7 @@ for i in range(0, 512):
 
 total_fmap_means_sorted = {k: v for k, v in sorted(total_fmap_means.items(), key=lambda item: item[1], reverse=True)}
 
-with open('total_fmap_means_nocomp.csv', 'w', newline='') as csvfile:
+with open('total_fmap_means_nocomp_a.csv', 'w', newline='') as csvfile:
     resultcsv = csv.writer(csvfile, delimiter=',',quotechar='|', quoting=csv.QUOTE_MINIMAL)
     resultcsv.writerow(['Filter Number', 'Mean Activation in Class'])
     for key in total_fmap_means_sorted:
